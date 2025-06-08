@@ -189,7 +189,7 @@ function FinanceManager({ initBallance, fee }) {
           <Button label="Зняти" onClick={() => withdrawMoney(userAmount)} />
         </div>
       </div>
-      <PredictionTable money={userAmount} fee={fee} />
+      <PredictionTable money={userAmount || 0} fee={fee} />
     </div>
   )
 }

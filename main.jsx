@@ -67,7 +67,7 @@ function Card({ title, text, href }) {
 function App({ tasks }) {
   return (
     <div className="overflow-hidden">
-      <main className="container-prose | py-4">
+      <main className="container py-4">
         <h1 className="text-center mb-4">1. Вступ. Основи синтаксису</h1>
         <div className="row g-2 g-md-3">
           {tasks.map((task, i) => (
