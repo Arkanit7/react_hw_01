@@ -18,6 +18,12 @@
   margin-bottom: 3rem;
 }
 
+.container-prose {
+  max-inline-size: 75ch;
+  margin-inline: auto;
+  padding-inline: calc(var(--bs-gutter-x) * 0.5);
+}
+
 .task-card {
   text-decoration: none;
   transition: color 0.3s;

@@ -98,7 +98,7 @@ function App() {
   )
 
   return (
-    <div className="container py-4">
+    <div className="container-prose | py-4">
       <h1>Задача №5</h1>
       <p>
         Додаток містить масив об'єктів (логін, пароль) – існуючі логіни і

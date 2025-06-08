@@ -75,7 +75,7 @@ function App() {
   }
 
   return (
-    <div className="container py-4">
+    <div className="container-prose | py-4">
       <h1>Задача №2</h1>
       <p>
         Вводиться номер місяця. Автоматично виводити рекомендований одяг (зима –

@@ -180,7 +180,7 @@ function FinanceManager({ fee = 3 / 100 }) {
 
 function App() {
   return (
-    <div className="container py-4">
+    <div className="container-prose | py-4">
       <TaskDescription />
       <hr />
       <h2>Рішення:</h2>

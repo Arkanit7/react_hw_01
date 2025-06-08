@@ -80,7 +80,7 @@ function App() {
   const getPassengerStats = getPassengerStatsFn(20, 2, 3)
 
   return (
-    <div className="container py-4">
+    <div className="container-prose | py-4">
       <h1>Задача №1</h1>
       <p>Вводиться кількість пасажирів. Вивести:</p>
       <ul>

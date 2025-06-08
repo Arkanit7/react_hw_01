@@ -232,10 +232,10 @@ function TaskDescription() {
 
 function App() {
   return (
-    <div className="container py-4">
+    <div className="container-prose | py-4">
       <TaskDescription />
       <hr />
-      <h2>Рішення:</h2>
+      <h2 className="mb-3">Рішення:</h2>
       <FinanceManager initBallance={0} fee={3 / 100} />
     </div>
   )

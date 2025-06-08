@@ -87,7 +87,7 @@ function RandomNumberRange({ initFrom, initTo }) {
 
 function App() {
   return (
-    <div className="container py-4">
+    <div className="container-prose | py-4">
       <h1>Задача №3</h1>
       <p>
         Задано початок та кінець діапазону. При натисканні на кнопку випадковим
