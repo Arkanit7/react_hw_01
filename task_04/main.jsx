@@ -90,7 +90,7 @@ function AmountInput({ amount, onAmountChange }) {
         autoComplete="off"
         required
         value={amount}
-        onInput={(e) => onAmountChange(parseFloat(e.currentTarget.value))}
+        onChange={(e) => onAmountChange(e.currentTarget.value)}
         type="number"
         min="0"
         step="0.01"
@@ -132,11 +132,12 @@ function PredictionTable({ money, fee }) {
 
 function FinanceManager({ initBallance, fee }) {
   const [ballance, setBallance] = useState(initBallance)
-  const [message, setMessage] = useState(() => ({
-    text: null,
-    type: null,
-  }))
+  const [message, setMessage] = useState(INFO_MESSAGES.BLANK)
+
   const [userAmount, setUserAmount] = useState('')
+  const parsedUserAmount = parseFloat(userAmount)
+  // Я навмисно використовую тип String для userAmount, щоб мати змогу очищувати поле вводу (писати не 0, а '')
+
   const [lastOperation, setLastOperation] = useState(null)
 
   function onBallanceChange(newBallance, operationType) {
@@ -183,13 +184,19 @@ function FinanceManager({ initBallance, fee }) {
       <AmountInput amount={userAmount} onAmountChange={onUserAmountChange} />
       <div className="row g-2">
         <div className="col-6 d-grid">
-          <Button label="Зарахувати" onClick={() => depositMoney(userAmount)} />
+          <Button
+            label="Зарахувати"
+            onClick={() => depositMoney(parsedUserAmount)}
+          />
         </div>
         <div className="col-6 d-grid">
-          <Button label="Зняти" onClick={() => withdrawMoney(userAmount)} />
+          <Button
+            label="Зняти"
+            onClick={() => withdrawMoney(parsedUserAmount)}
+          />
         </div>
       </div>
-      <PredictionTable money={userAmount || 0} fee={fee} />
+      <PredictionTable money={parsedUserAmount || 0} fee={fee} />
     </div>
   )
 }

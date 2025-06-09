@@ -1,47 +1,39 @@
 import React, { useState } from 'react'
 import { createRoot } from 'react-dom/client'
 
-function getSeasonByMonthNumber(monthNum) {
-  if (monthNum === 12 || monthNum < 3) return 'winter'
-  if (monthNum < 6) return 'spring'
-  if (monthNum < 9) return 'summer'
-  return 'autumn'
+const SEASONAL_DETAILS = {
+  winter: {
+    clothes: 'пальто',
+    imgSrc: './images/winter_forest.webp',
+    imgAlt: 'Зимовий ліс',
+  },
+  spring: {
+    clothes: 'дощовик',
+    imgSrc: './images/spring_forest.webp',
+    imgAlt: 'Весняний ліс',
+  },
+  summer: {
+    clothes: 'шорти',
+    imgSrc: './images/summer_forest.webp',
+    imgAlt: 'Літній ліс',
+  },
+  autumn: {
+    clothes: 'куртка',
+    imgSrc: './images/autumn_forest.webp',
+    imgAlt: 'Осінній ліс',
+  },
 }
 
-function getClothesAndImageByMonthNumber(monthNumber) {
-  const season = getSeasonByMonthNumber(monthNumber)
-
-  switch (season) {
-    case 'winter':
-      return {
-        clothes: 'пальто',
-        imgSrc: './images/winter_forest.webp',
-        imgAlt: 'Зимовий ліс',
-      }
-    case 'spring':
-      return {
-        clothes: 'дощовик',
-        imgSrc: './images/spring_forest.webp',
-        imgAlt: 'Весняний ліс',
-      }
-    case 'summer':
-      return {
-        clothes: 'шорти',
-        imgSrc: './images/summer_forest.webp',
-        imgAlt: 'Літній ліс',
-      }
-    default:
-      return {
-        clothes: 'куртка',
-        imgSrc: './images/autumn_forest.webp',
-        imgAlt: 'Осінній ліс',
-      }
-  }
+function getSeasonNameByMonthNumber(monthNumber) {
+  if (monthNumber === 12 || monthNumber < 3) return 'winter'
+  if (monthNumber < 6) return 'spring'
+  if (monthNumber < 9) return 'summer'
+  return 'autumn'
 }
 
 // =============================================================================
 
-function InputGroup({ value, onInput, label, type = 'text', className }) {
+function InputGroup({ value, onChange, label, type = 'text', className }) {
   const bindingId = crypto.randomUUID()
 
   return (
@@ -56,7 +48,7 @@ function InputGroup({ value, onInput, label, type = 'text', className }) {
         style={{ minWidth: '10ch' }}
         type={type}
         value={value}
-        onInput={onInput}
+        onChange={onChange}
       />
     </div>
   )
@@ -64,7 +56,8 @@ function InputGroup({ value, onInput, label, type = 'text', className }) {
 
 function App() {
   const [monthNum, setMonthNum] = useState(1)
-  const { clothes, imgSrc, imgAlt } = getClothesAndImageByMonthNumber(monthNum)
+  const seasonName = getSeasonNameByMonthNumber(monthNum)
+  const { clothes, imgSrc, imgAlt } = SEASONAL_DETAILS[seasonName]
 
   function handleMonthChange({ currentTarget: { value } }) {
     const parsedValue = parseInt(value)
@@ -88,7 +81,7 @@ function App() {
       <InputGroup
         className="mb-3"
         value={monthNum}
-        onInput={handleMonthChange}
+        onChange={handleMonthChange}
         label={'Номер місяця:'}
         type="number"
       />

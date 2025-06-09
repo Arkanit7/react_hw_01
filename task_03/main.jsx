@@ -8,7 +8,7 @@ function getRandomNumber(from, to) {
 function InputGroupFragment({
   label,
   value,
-  onInput,
+  onChange,
   min,
   max,
   type = 'text',
@@ -25,7 +25,7 @@ function InputGroupFragment({
         className="form-control"
         type={type}
         value={value}
-        onInput={onInput}
+        onChange={onChange}
         min={min}
         max={max}
       />
@@ -70,13 +70,13 @@ function RandomNumberRange({ initFrom, initTo }) {
           type="number"
           label="Від"
           value={from}
-          onInput={onFromChange}
+          onChange={onFromChange}
         />
         <InputGroupFragment
           type="number"
           label="До"
           value={to}
-          onInput={onToChange}
+          onChange={onToChange}
         />
       </div>
       <button className="btn btn-info w-100 mb-3">Генерувати</button>

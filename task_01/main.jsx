@@ -9,7 +9,7 @@ function getPassengerStatsFn(busCapacity, waterBottles, sandwiches) {
   })
 }
 
-function ControlledInput({ value, onInput, label, type = 'text' }) {
+function ControlledInput({ value, onChange, label, type = 'text' }) {
   const bindingId = crypto.randomUUID()
 
   return (
@@ -24,7 +24,7 @@ function ControlledInput({ value, onInput, label, type = 'text' }) {
         style={{ minWidth: '10ch' }}
         type={type}
         value={value}
-        onInput={onInput}
+        onChange={onChange}
       />
     </div>
   )
@@ -67,7 +67,7 @@ function PassengerStats({ statsFn }) {
     <>
       <ControlledInput
         value={passengersAmount}
-        onInput={onPassengersChange}
+        onChange={onPassengersChange}
         type="number"
         label={'Кількість пасажирів:'}
       />
